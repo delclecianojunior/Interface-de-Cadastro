@@ -1,0 +1,46 @@
+<h3>Cadastro de Pessoas</h3>
+<button (click)="mostrarTodosUsuarios()">Mostrar Usuarios</button>
+<br><br>
+
+<form [formGroup]="formulario">
+
+    <div style="display: none">
+        <label>Id</label>
+        <br>
+        <input type="number" id="indice" formControlName="id">
+    </div>
+
+    <br><br>
+    <label>Nome</label>
+    <br>
+    <input type="text" id="nome" placeholder="Digite o nome" formControlName="nome">
+    <br><br>
+
+    <label>Profissao</label>
+    <br>
+    <input type="text" id="profissao" placeholder="Digite a profissao" formControlName="profissao">
+    <br><br>
+    <button (click)="salvar()">Salvar</button>
+</form>
+
+<br><br>
+
+<div>
+    <table border="1">
+        <thead>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Profissao</th>
+            <th>Ações</th>
+        </thead>
+        <tbody id="tbody">
+            <tr *ngFor="let pessoa of pessoas">
+                <td>{{pessoa?.id}}</td>
+                <td>{{pessoa?.nome}}</td>
+                <td>{{pessoa?.profissao}}</td>
+                <td><button (click)="editar(pessoa)">Editar</button></td>
+                <td><button (click)="excluir(pessoa)">Excluir</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
